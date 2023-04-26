@@ -14,8 +14,14 @@ btnPlay.addEventListener('click', function() {
 	eleGrid.style.setProperty('--sideSquare', Math.sqrt(nCells));
 
 	createGrid(nCells, eleGrid);
+
+	const arrPresentRandoms = [];
 	
-	console.log(getUniqueRandom(1, nCells, arrNums));
+	for (let i = 0; i < 16; i++){
+		const random = getUniqueRandom(1, nCells, arrPresentRandoms);
+	}
+
+	console.log(random);
 });
 
 // FUNCTION
@@ -43,6 +49,5 @@ function getUniqueRandom(min, max, arrNums) {
 	do {
 		rand = Math.floor(Math.random() * (max - min + 1) ) + min;
 	} while (arrNums.includes(rand))
-
 	return rand;
 }
