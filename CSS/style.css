@@ -50,8 +50,17 @@ footer {
 	cursor: pointer;
 }
 
+.punteggio {
+	display: block;
+}
+
 .clicked {
 	background-color: aqua;
+}
+
+.mine {
+	background-color: red;
+	color: red;
 }
 
 .hidden {
