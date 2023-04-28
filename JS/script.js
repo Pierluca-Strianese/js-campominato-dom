@@ -3,6 +3,8 @@ const btnPlay = document.querySelector('#play');
 const selectLevel = document.querySelector('#level');
 const eleHelp = document.querySelector('.help');
 
+let arrMines;
+
 btnPlay.addEventListener('click', function() {
 
 	eleHelp.classList.add('hidden');
@@ -13,15 +15,16 @@ btnPlay.addEventListener('click', function() {
 
 	eleGrid.style.setProperty('--sideSquare', Math.sqrt(nCells));
 
-	createGrid(nCells, eleGrid);
-
-	const arrPresentRandoms = [];
-	
-	for (let i = 0; i < 16; i++){
-		const random = getUniqueRandom(1, nCells, arrPresentRandoms);
+	arrMines = [];
+	for (i = 0; i < 16; i++) {
+		do {
+			arrMines.push(getRndInteger(1, nCells));
+		}
+		while arrMines.includes(randomNum);
 	}
 
-	console.log(random);
+
+	createGrid(nCells, eleGrid);
 });
 
 // FUNCTION
@@ -44,10 +47,6 @@ function createGrid(nCells, eleContainer) {
 	}
 }
 
-function getUniqueRandom(min, max, arrNums) {
-	let rand;
-	do {
-		rand = Math.floor(Math.random() * (max - min + 1) ) + min;
-	} while (arrNums.includes(rand))
-	return rand;
+function getRndInteger(min, max) {
+  return Math.floor(Math.random() * (max - min) ) + min;
 }
